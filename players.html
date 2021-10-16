@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA - Players - Suhas Kasireddy</title>
+    <link rel="Stylesheet" href="{{url_for('static', filename='players_style.css')}}">
+    {{ JSGlue.include() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='dropdown.js')}}"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+
+<body>
+        
+        <div class="sidebar">
+            <div class = "side">
+            <img class="search-btn" src="{{url_for('static', filename='images/search.png')}}" id="open-side-bar"
+                onclick="toggleSearch()">
+            </div>
+
+
+            <header>Search</header>
+            <ul>
+                <li>
+                    <input type="text" id="team-input" list="teams" placeholder= "Filter by Team"  onfocus="cleardropdown()">
+                    <datalist id="teams" >
+                        <option value="All" selected></option>
+                        {% for team in teams %}
+                        <option>{{team}}</option>
+                        {% endfor %}
+                    </datalist>
+                </li>
+
+                <li>
+                    <input id="player-input" type="text" list="players" placeholder="Players" onfocus="clearplayerdropdown()"/>
+                    <datalist id="players">
+                        {% for player in all_players %}
+                        <option>{{player}}</option>
+                        {% endfor %}
+                    </datalist>
+                </li>
+            </ul>
+            <div class=player-details>
+                <img src="{{url_for('static', filename='images/basketball.png')}}" id="ppic">
+                <p class= pname id=pname></p>
+                <div class="spans">
+                    <span class=pteam id=pteam></span>
+                    <span id=pnum></span>
+                    <span id=ppos></span>
+                </div>
+            </div>
+            <button id=add class=add onclick="addStats()">+</button>
+        </div>
+
+
+
+
+        <div class="content">
+            
+            <div class="nav">
+                <header class="stats-header">Player Stats:</header>
+                <a href="{{url_for('home')}}"><img class="logout-btn" src="{{url_for('static', filename='images/logout.png')}}"id="logout"></a>
+            </div>
+            <div class=player-stats>
+                <div class="graph">
+                    <div id="chart_div"></div>
+                </div>
+                <div class = "major-stats">
+                    <ul>
+                        <li>PTS: <i id=pts1></i></li>
+                        <li>REB: <i id=reb1></i></li>
+                        <li>AST: <i id=ast1></i></li>
+                    </ul>
+                </div>
+
+                
+
+                <div class = "minor-stats">
+                    <header>Season Averages:</header>
+                    <span>games:<i id=gp></i></span>
+                    <span>minutes:<i id=mp></i></span>
+                    <span>fgm:<i id=fgm></i></span>
+                    <span>fga:<i id=fga></i></span>
+                    <span>fg3m:<i id=fg3m></i></span>
+                    <span>fg3a:<i id=fg3a></i></span>
+                    <span>ftm:<i id=ftm></i></span>
+                    <span>fta:<i id=fta></i></span>
+                    <span>oreb:<i id=oreb></i></span>
+                    <span>dreb:<i id=dreb></i></span>
+                    <span>reb:<i id=reb></i></span>
+                    <span>ast:<i id=ast></i></span>
+                    <span>stl:<i id=stl></i></span>
+                    <span>blk:<i id=blk></i></span>
+                    <span>turnover:<i id=tu></i></span>
+                    <span>personal fouls:<i id=pf></i></span>
+                    <span>pts:<i id=pts></i></span>
+                    <span>fg pct:<i id=fgpct></i></span>
+                    <span>fg3 pct:<i id=fg3pct></i></span>
+                    <span>ft pct:<i id=ftpct></i></span>
+                </div>
+            </div>
+            
+        </div>
+
+
+</body>
+
+</html>

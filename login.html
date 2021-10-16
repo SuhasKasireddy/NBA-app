@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <title>NBA - Login - Suhas Kasireddy</title>
+    <link rel="Stylesheet" href="{{url_for('static', filename='login_style.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <form action="{{ url_for('login')}}" method="post">
+            <div class="username-box">
+                <input type="username" name ="uname" id="username" placeholder="Username">
+            </div>
+            
+            <div class="password-box">
+                <input type="password" name="upass" id="password" placeholder="Password">
+            </div>
+            <div class = "login">
+                <span>Login</span>
+                <button type="submit"><img src="{{url_for('static', filename='images/arrow.png')}}"></button>
+            </div>
+            
+            
+
+        </div>
+        
+    </div>
+
+    <!--
+    <script>
+
+        var pass = document.getElementById("password")
+        var msg = document.getElementById("message")
+        var str = document.getElementById("strength")
+
+        pass.addEventListener('input', () => {
+            if (pass.value.length > 0) {
+                msg.style.display = "block";
+            }
+            else {
+                msg.style.display = "none";
+            }
+
+            if (pass.value.length < 4) {
+                str.innerHTML = "weak";
+                pass.style.borderColor = "#ff5925";
+                str.style.color = "#ff5925";
+            }
+            else if (pass.value.length >= 4 && pass.value.length < 8) {
+                str.innerHTML = "ok";
+                pass.style.borderColor = "yellow";
+                str.style.color = "yellow";
+            }
+            else if (pass.value.length >= 8) {
+                str.innerHTML = "strong";
+                pass.style.borderColor = "#26d730";
+                str.style.color = "#26d730";
+            }
+
+
+        })
+
+    </script>
+    -->
+</body>
+
+</html>
